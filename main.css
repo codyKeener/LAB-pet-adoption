@@ -1,9 +1,16 @@
 body {
   background-color: gainsboro;
   display: flex;
+}
+
+/* left side */
+
+#body-container {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* width: 70%; */
 }
 
 #button-container {
@@ -13,9 +20,18 @@ body {
 #see-all-pets-container {
   max-width: 100%;
   margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #see-all-pets-btn {
+  margin-bottom: 40px;
+  width: 350px;
+  font-size: 40px;
+  margin-right: 6px;
+}
+
+#add-a-pet-btn {
   margin-bottom: 40px;
   width: 350px;
   font-size: 40px;
@@ -61,6 +77,8 @@ img {
 .card-footer {
   padding: 0px;
   height: 60px;
+  display: flex;
+  border: 1px solid skyblue;
 }
 
 p {
@@ -93,4 +111,33 @@ p {
 
 img {
   height: 250px;
+}
+
+/* right side */
+
+#add-a-pet-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 400px;
+  border-left: 3px solid black;
+  /* display: none; */
+}
+
+#add-a-pet-header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#add-a-pet-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 30px;
+}
+
+input {
+  width: 350px;
 }

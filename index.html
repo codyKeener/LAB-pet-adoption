@@ -8,16 +8,38 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="button-container">
-    <button class="pet-button cat" id="cats-btn">Cats</button>
-    <button class="pet-button dog" id="dogs-btn">Dogs</button>
-    <button class="pet-button dino" id="dinos-btn">Dinos</button>
+  <div id="body-container">
+    <div id="button-container">
+      <button class="pet-button cat" id="cats-btn">Cats</button>
+      <button class="pet-button dog" id="dogs-btn">Dogs</button>
+      <button class="pet-button dino" id="dinos-btn">Dinos</button>
+    </div>
+    <div id="see-all-pets-btn-container">
+      <button id="see-all-pets-btn">See all Pets</button>
+      <button id="add-a-pet-btn">Add a Pet</button>
+    </div>
+    <div class="card-container" id="card-container">
+    </div>
   </div>
-  <div id="see-all-pets-btn-container">
-    <button id="see-all-pets-btn">See all Pets</button>
-  </div>
-  <div class="card-container" id="card-container">
-    
+
+  <div id="add-a-pet-form-container" hidden>
+    <h1 id="add-a-pet-header">Add a Pet!</h1>
+    <form id="add-a-pet-form">
+      <!-- <label for="form-pet-name">Pet Name</label> -->
+      <input type="text" id="form-pet-name" placeholder="Pet Name">
+
+      <!-- <label for="form-pet-color">Pet Color</label> -->
+      <input type="text" id="form-pet-color" placeholder="Pet Color">
+
+      <!-- <label for="form-pet-special-skill">Special Skill</label> -->
+      <input type="text" id="form-pet-special-skill" placeholder="Special Skill">
+
+      <!-- <label for="form-pet-type">Pet Type</label> -->
+      <input type="text" id="form-pet-type" placeholder="cat, dog, or dino?">
+
+      <input type="text" id="form-pet-image" placeholder="Link to an image of the pet">
+      <button type="submit">Submit</button>
+    </form>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="main.js"></script>

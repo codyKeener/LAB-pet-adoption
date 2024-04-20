@@ -264,6 +264,7 @@ const petCardsOnDom = (array) => {
       </div>
       <div class="card-footer">
       <p class="pet-type ${pet.type}">${pet.type}</p>
+      <button class="btn btn-danger" id="delete--${pet.id}">Delete</button>
       </div>
     </div>`
   })
@@ -287,20 +288,62 @@ const filterByPetType = (array, petType) => {
 //event listeners for each of the buttons
 catsButton.addEventListener("click", () => {
   const catArray = filterByPetType(pets, "cat")
-  console.log(catArray)
   petCardsOnDom(catArray)
 })
 dogsButton.addEventListener("click", () => {
   const dogArray = filterByPetType(pets, "dog")
-  console.log(dogArray)
   petCardsOnDom(dogArray)
 })
 dinosButton.addEventListener("click", () => {
   const dinoArray = filterByPetType(pets, "dino")
-  console.log(dinoArray)
   petCardsOnDom(dinoArray)
 })
 
 seeAllPetsButton.addEventListener("click", () => {
   petCardsOnDom(pets)
+})
+
+
+//Add a Pet
+
+const form = document.querySelector("form")
+
+const addAPet = (e) => {
+  e.preventDefault();
+
+  const newPetObj = {
+    id: pets.length + 1,
+    name: document.querySelector("#form-pet-name").value,
+    color: document.querySelector("#form-pet-color").value,
+    specialSkill: document.querySelector("#form-pet-special-skill").value,
+    type: document.querySelector("#form-pet-type").value,
+    imageUrl: document.querySelector("#form-pet-image").value
+  }
+  pets.push(newPetObj)
+  petCardsOnDom(pets)
+  form.reset()
+}
+
+form.addEventListener("submit", addAPet)
+
+const addAPetButton = document.querySelector("#add-a-pet-btn")
+const addAPetFormContainer = document.querySelector("#add-a-pet-form-container")
+
+addAPetButton.addEventListener("click", (e) => {
+  addAPetFormContainer.toggleAttribute("hidden")
+} )
+
+
+
+//delete button
+
+const bodyContainer = document.querySelector("#body-container")
+
+bodyContainer.addEventListener("click", (e) => {
+  if (e.target.id.includes("delete")) {
+    const [, id] = e.target.id.split("--")
+    const index = pets.findIndex((pet) => pet.id === Number(id))
+    pets.splice(index, 1)
+    petCardsOnDom(pets)
+  }
 })
