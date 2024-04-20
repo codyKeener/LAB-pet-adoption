@@ -259,8 +259,8 @@ const petCardsOnDom = (array) => {
       </div>
       <img src="${pet.imageUrl}" class="card-img-top" alt="picture of ${pet.name}">
       <div class="card-body">
-        <p class="card-text" class="pet-color">${pet.color}</p>
-        <p class="card-text" class="pet-special-skill">${pet.specialSkill}</p>
+        <p class="card-text" class="pet-color"><strong>Color: </strong>${pet.color}</p>
+        <p class="card-text" class="pet-special-skill"><strong>Special Skill:</strong> ${pet.specialSkill}</p>
       </div>
       <div class="card-footer">
       <p class="pet-type ${pet.type}">${pet.type}</p>
@@ -270,6 +270,7 @@ const petCardsOnDom = (array) => {
   })
   cardContainer.innerHTML = domString
 }
+
 
 //calling the function to have all pets show up on the DOM when the site first loads
 petCardsOnDom(pets)
@@ -346,4 +347,41 @@ bodyContainer.addEventListener("click", (e) => {
     pets.splice(index, 1)
     petCardsOnDom(pets)
   }
+})
+
+
+//random color for headers
+headerText = document.querySelector("h1")
+
+let randomNumber
+let lastNumber
+
+headerText.addEventListener("mouseover", (e) => {
+  fontColorArray = ["#0000FF", "#008000", "#FFA500"]
+
+  // randomNumber = Math.floor(Math.random() * 3)
+
+  while (randomNumber === lastNumber) {
+    randomNumber = Math.floor(Math.random() * 3)
+  }
+
+  headerText.style.color = fontColorArray[randomNumber]
+  
+  lastNumber = randomNumber
+})
+
+addAPetHeaderText = document.querySelector("#add-a-pet-header")
+
+addAPetHeaderText.addEventListener("mouseover", (e) => {
+  fontColorArray = ["#0000FF", "#008000", "#FFA500"]
+
+  // randomNumber = Math.floor(Math.random() * 3)
+
+  while (randomNumber === lastNumber) {
+    randomNumber = Math.floor(Math.random() * 3)
+  }
+
+  addAPetHeaderText.style.color = fontColorArray[randomNumber]
+  
+  lastNumber = randomNumber
 })
