@@ -286,21 +286,36 @@ const filterByPetType = (array, petType) => {
   return newArray
 }
 
-//event listeners for each of the buttons
-catsButton.addEventListener("click", () => {
+//functions that display the filtered cards on the DOM
+
+let filterView = "pets"
+
+const catFilter = () => {
   const catArray = filterByPetType(pets, "cat")
+  filterView = "cat"
   petCardsOnDom(catArray)
-})
-dogsButton.addEventListener("click", () => {
+}
+
+const dogFilter = () => {
   const dogArray = filterByPetType(pets, "dog")
+  filterView = "dog"
   petCardsOnDom(dogArray)
-})
-dinosButton.addEventListener("click", () => {
+}
+
+const dinoFilter = () => {
   const dinoArray = filterByPetType(pets, "dino")
+  filterView = "dino"
   petCardsOnDom(dinoArray)
-})
+}
+
+//event listeners for each of the buttons
+
+catsButton.addEventListener("click", catFilter)
+dogsButton.addEventListener("click", dogFilter)
+dinosButton.addEventListener("click", dinoFilter)
 
 seeAllPetsButton.addEventListener("click", () => {
+  filterView = "pets"
   petCardsOnDom(pets)
 })
 
@@ -321,8 +336,30 @@ const addAPet = (e) => {
     imageUrl: document.querySelector("#form-pet-image").value
   }
   pets.push(newPetObj)
-  petCardsOnDom(pets)
+
   form.reset()
+
+  switch (filterView) {
+    case "pets":
+      petCardsOnDom(pets)
+      break
+    case "cat":
+      catFilter()
+      break
+    case "dog":
+      dogFilter()
+      break
+    case "dino":
+      dinoFilter()
+      break
+  }
+
+  let card = cardContainer.getElementsByClassName("card")
+
+  let lastPet = pets.length - 1
+  if (pets[lastPet].type === filterView || filterView === "pets") {
+    window.scrollTo(0, document.body.scrollHeight)
+  }
 }
 
 form.addEventListener("submit", addAPet)
@@ -333,7 +370,6 @@ const addAPetFormContainer = document.querySelector("#add-a-pet-form-container")
 addAPetButton.addEventListener("click", (e) => {
   addAPetFormContainer.toggleAttribute("hidden")
 } )
-
 
 
 //delete button
